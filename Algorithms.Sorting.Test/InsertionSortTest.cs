@@ -12,9 +12,9 @@ public class InsertionSortTest
     [SetUp]
     public void Init()
     {
-        this.sorter = new InsertionSort<int>();
-        this.provider = DataProvider.GetDataProvider();
-        this.validator = Validator.GetValidator();
+        sorter = new InsertionSort<int>();
+        provider = DataProvider.GetDataProvider();
+        validator = Validator.GetValidator();
     }
 
     [Test]

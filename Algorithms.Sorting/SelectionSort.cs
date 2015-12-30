@@ -3,10 +3,17 @@
 namespace Algorithms.Sorting
 {
     /// <summary>
-    /// Selection sort algorithm
-    ///  Θ(n) ~ N^2
+    /// Selection algorithm
+    ///  https://en.wikipedia.org/wiki/Selection_sort
+    ///  
+    ///  Method: Selection
+    ///  Stable: No
+    ///  Worst case performance: O(n^2)
+    ///  Best case performance: Ω(n^2)
+    ///  Average case performance: O(n^2)
+    ///  Worst space complexity: O(1)
     /// </summary>
-    public class SelectionSort<T> : ISort<T> where T : IComparable
+    public class SelectionSort<T> : ISort<T> where T : IComparable<T>, new()
     {
         public T[] Sort(T[] array)
         {

@@ -3,10 +3,17 @@ using System;
 namespace Algorithms.Sorting
 {
     /// <summary>
-    /// Shell sort algorithm
-    ///  Θ(n) ~ ____
+    /// Shellsort algorithm
+    ///  https://en.wikipedia.org/wiki/Shellsort
+    ///  
+    ///  Method: Selection
+    ///  Stable: No
+    ///  Worst case performance: O(n^2)
+    ///  Best case performance: Ω(n log n)
+    ///  Average case performance: depends on gap sequence
+    ///  Space: O(1)
     /// </summary>
-    public class ShellSort<T> : ISort<T> where T : IComparable, new()
+    public class ShellSort<T> : ISort<T> where T : IComparable<T>, new()
     {
         public T[] Sort(T[] array)
         {

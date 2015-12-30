@@ -104,13 +104,13 @@ namespace Algorithms.Tests.Helper
 
         public int[] GetEmptyIntegerArray()
         {
-            int[] data = { 1 };
+            int[] data = { };
             return data;
         }
 
         public int[] GetOneElementIntegerArray()
         {
-            int[] data = {};
+            int[] data = { 1 };
             return data;
         }
 

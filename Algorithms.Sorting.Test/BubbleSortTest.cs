@@ -12,9 +12,9 @@ public class BubbleSortTest
     [SetUp]
     public void Init()
 	{
-        this.sorter = new BubbleSort<int>();
-        this.provider = DataProvider.GetDataProvider();
-        this.validator = Validator.GetValidator();
+        sorter = new BubbleSort<int>();
+        provider = DataProvider.GetDataProvider();
+        validator = Validator.GetValidator();
 	}
 
     [Test]

@@ -4,10 +4,16 @@ namespace Algorithms.Sorting
 {
     /// <summary>
     /// Comb sort algorithm
-    ///  O(n^2)
-    ///  Θ(n^2 / 2^p) where p is a number of increments
+    ///  https://en.wikipedia.org/wiki/Comb_sort
+    ///  
+    ///  Method: Exchange
+    ///  Stable: No
+    ///  Worst case performance: O(n^2)
+    ///  Best case performance: Ω(n)
+    ///  Average case performance: O(n^2 / 2^p)
+    ///  Worst space complexity: O(1)
     /// </summary>
-    public class CombSort<T> : ISort<T> where T : IComparable, new()
+    public class CombSort<T> : ISort<T> where T : IComparable<T>, new()
     {
         public T[] Sort(T[] array)
         {

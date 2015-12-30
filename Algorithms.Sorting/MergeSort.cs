@@ -2,11 +2,18 @@
 
 namespace Algorithms.Sorting
 {
-    /// <summary>
+    /// /// <summary>
     /// Merge sort algorithm
-    ///  Θ(n * log(n))
+    ///  https://en.wikipedia.org/wiki/Merge_sort
+    ///  
+    ///  Method: Merging
+    ///  Stable: Yes
+    ///  Worst case performance: O(n log n)
+    ///  Best case performance: Ω(n log n)
+    ///  Average case performance: O(n log n)
+    ///  Space: O(n)
     /// </summary>
-    public class MergeSort<T> : ISort<T> where T : IComparable, new()
+    public class MergeSort<T> : ISort<T> where T : IComparable<T>, new()
     {
         public T[] Sort(T[] array)
         {

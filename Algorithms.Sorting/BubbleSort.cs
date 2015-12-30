@@ -4,9 +4,16 @@ namespace Algorithms.Sorting
 {
     /// <summary>
     /// Bubble sort algorithm
-    ///  Θ(N^2)
+    ///  https://en.wikipedia.org/wiki/Bubble_sort
+    ///  
+    ///  Method: Exchange
+    ///  Stable: Yes
+    ///  Worst case performance: O(n^2)
+    ///  Best case performance: Ω(n)
+    ///  Average case performance: O(n^2)
+    ///  Worst space complexity: O(1)
     /// </summary>
-    public class BubbleSort<T> : ISort<T> where T : IComparable, new()
+    public class BubbleSort<T> : ISort<T> where T : IComparable<T>, new()
     {
         public T[] Sort(T[] array)
         {
