@@ -20,7 +20,7 @@ public class InsertionSortTest
     [Test]
     public void InsertionSort_RandomIntegerSequence_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetRandomData1K());
+        int[] temp = sorter.Sort((int[])provider.GetRandomIntegerArray(1000));
 
         if (!validator.ValidateOrder<int>(temp))
         {

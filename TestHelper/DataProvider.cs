@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+
 namespace Algorithms.Tests.Helper
 {
     public class DataProvider
@@ -22,7 +25,7 @@ namespace Algorithms.Tests.Helper
             return _instance;
         }
 
-        public int[] GetRandomData1K()
+        public int[] GetIntegerArray1K()
         {
             int[] data = 
             {
@@ -102,6 +105,37 @@ namespace Algorithms.Tests.Helper
             return data;
         }
 
+        public int[] GetRandomIntegerArray(int size=1024, int range=1000) {
+            Random rnd = new Random();
+            int[] data = new int[size];
+            for (int i = 0; i < size; i++) {
+                data[i] = rnd.Next(range);
+            }
+            return data;
+        }
+
+        public string[] GetRandomStringsArray(int size = 1000, int length=0)
+        {
+            Random rnd = new Random();
+            string[] data = new string[size];
+            for(int i = 0; i < size; i++)
+            {
+                data[i] = RandomString(length);
+            }
+            return data;
+        }
+
+        private string RandomString(int length = 0)
+        {
+            Random rnd = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            if (length == 0)
+            {
+                length = rnd.Next(2, 20);
+            }
+            return new string(Enumerable.Repeat(chars, length).Select(s => s[rnd.Next(s.Length)]).ToArray());
+        }
+
         public int[] GetEmptyIntegerArray()
         {
             int[] data = { };
@@ -111,6 +145,18 @@ namespace Algorithms.Tests.Helper
         public int[] GetOneElementIntegerArray()
         {
             int[] data = { 1 };
+            return data;
+        }
+
+        public string[] GetEmptyStringArray()
+        {
+            string[] data = { };
+            return data;
+        }
+
+        public string[] GetOneElementStringArray()
+        {
+            string[] data = { "aa" };
             return data;
         }
 

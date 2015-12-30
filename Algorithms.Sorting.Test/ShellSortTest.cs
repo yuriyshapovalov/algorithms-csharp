@@ -5,24 +5,23 @@ using Algorithms.Tests.Helper;
 [TestFixture]
 public class ShellSortTest
 {
-    private ISort<int> sorter;
     private DataProvider provider;
     private Validator validator;
 
     [SetUp]
     public void Init()
     {
-        this.sorter = new ShellSort<int>();
-        this.provider = DataProvider.GetDataProvider();
-        this.validator = Validator.GetValidator();
+        provider = DataProvider.GetDataProvider();
+        validator = Validator.GetValidator();
     }
 
     [Test]
     public void ShellSort_RandomIntegerSequence_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetRandomData1K());
+        ISort<int> sorter = new ShellSort<int>();
+        int[] temp = sorter.Sort(provider.GetRandomIntegerArray(1000));
 
-        if (!validator.ValidateOrder<int>(temp))
+        if (!validator.ValidateOrder(temp))
         {
             Assert.Fail();
         }
@@ -31,9 +30,10 @@ public class ShellSortTest
     [Test]
     public void ShellSort_EmptyArray_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetEmptyIntegerArray());
+        ISort<int> sorter = new ShellSort<int>();
+        int[] temp = sorter.Sort(provider.GetEmptyIntegerArray());
 
-        if (!validator.ValidateOrder<int>(temp))
+        if (!validator.ValidateOrder(temp))
         {
             Assert.Fail();
         }
@@ -42,9 +42,10 @@ public class ShellSortTest
     [Test]
     public void ShellSort_OneElementArray_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetOneElementIntegerArray());
+        ISort<int> sorter = new ShellSort<int>();
+        int[] temp = sorter.Sort(provider.GetOneElementIntegerArray());
 
-        if (!validator.ValidateOrder<int>(temp))
+        if (!validator.ValidateOrder(temp))
         {
             Assert.Fail();
         }

@@ -12,15 +12,15 @@ public class SelectionSortTest
     [SetUp]
     public void Init()
     {
-        this.sorter = new SelectionSort<int>();
-        this.provider = DataProvider.GetDataProvider();
-        this.validator = Validator.GetValidator();
+        sorter = new SelectionSort<int>();
+        provider = DataProvider.GetDataProvider();
+        validator = Validator.GetValidator();
     }
 
     [Test]
     public void SelectionSort_RandomIntegerSequence_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetRandomData1K());
+        int[] temp = sorter.Sort(provider.GetRandomIntegerArray(1000));
 
         if (!validator.ValidateOrder<int>(temp))
         {
@@ -31,7 +31,7 @@ public class SelectionSortTest
     [Test]
     public void SelectionSort_EmptyArray_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetEmptyIntegerArray());
+        int[] temp = sorter.Sort(provider.GetEmptyIntegerArray());
 
         if (!validator.ValidateOrder<int>(temp))
         {
@@ -42,7 +42,7 @@ public class SelectionSortTest
     [Test]
     public void SelectionSort_OneElementArray_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetOneElementIntegerArray());
+        int[] temp = sorter.Sort(provider.GetOneElementIntegerArray());
 
         if (!validator.ValidateOrder<int>(temp))
         {

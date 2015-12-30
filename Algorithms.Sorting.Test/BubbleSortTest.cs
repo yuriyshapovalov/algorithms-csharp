@@ -20,7 +20,7 @@ public class BubbleSortTest
     [Test]
     public void BubbleSort_RandomIntegerSequence_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetRandomData1K());
+        int[] temp = sorter.Sort(provider.GetRandomIntegerArray());
 
         if (!validator.ValidateOrder<int>(temp))
         {
@@ -31,7 +31,7 @@ public class BubbleSortTest
     [Test]
     public void BubbleSort_EmptyArray_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetEmptyIntegerArray());
+        int[] temp = sorter.Sort(provider.GetEmptyIntegerArray());
 
         if (!validator.ValidateOrder<int>(temp))
         {
@@ -42,7 +42,7 @@ public class BubbleSortTest
     [Test]
     public void BubbleSort_OneElementArray_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetOneElementIntegerArray());
+        int[] temp = sorter.Sort(provider.GetOneElementIntegerArray());
 
         if (!validator.ValidateOrder<int>(temp))
         {

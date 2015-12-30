@@ -20,7 +20,7 @@ public class MergeSortTest
     [Test]
     public void MergeSort_RandomIntegerSequence_Success()
     {
-        int[] temp = sorter.Sort((int[])provider.GetRandomData1K());
+        int[] temp = sorter.Sort(provider.GetRandomIntegerArray(1000));
 
         if (!validator.ValidateOrder<int>(temp))
         {
