@@ -23,58 +23,44 @@ namespace Algorithms.Sorting
                 return array;
 	        }
 
-            return Sort(array, 0, array.Length-1);
-
-        }
-
-        private T[] Sort(T[] array, int left, int right)
-        {
-            int middle = (int) (right + left) / 2;
-
-            if (left < right)
-            {
-                Sort(array, left, middle);
-                Sort(array, middle + 1, right);
-            }
-
-            T[] leftArray = new T[middle - left + 1];
-            T[] rightArray = new T[right - middle];
-
-            Array.Copy(array, left, leftArray, 0, middle - left + 1);
-            Array.Copy(array, middle + 1, rightArray, 0, right - middle);
-
-            return Merge(array, leftArray, rightArray);
-        }
-
-        private T[] Merge(T[] array, T[] leftArray, T[] rightArray)
-        { 
-            int i = 0;
-            int j = 0;
-            for (int k = 0; k < (leftArray.Length - 1) + (rightArray.Length - 1); k++)
-            {
-                if (i == leftArray.Length)
-                {
-                    array[k] = rightArray[j];
-                    j++;
-                }
-                else if (j == rightArray.Length)
-                {
-                    array[k] = leftArray[i];
-                    i++;
-                }
-                else if (leftArray[i].CompareTo(rightArray[j]) <= 0)
-                {
-                    array[k] = leftArray[i];
-                    i++;
-                }
-                else
-                {
-                    array[k] = rightArray[j];
-                    j++;
-                }
-            }
+            T[] aux = new T[array.Length];
+            Sort(array, aux, 0, array.Length-1);
 
             return array;
+
+        }
+
+        private void Sort(T[] array, T[] aux, int left, int right)
+        {
+            if (right <= left)
+                return;
+
+            int middle = left + (right - left) / 2;
+
+            Sort(array, aux, left, middle);
+            Sort(array, aux, middle + 1, right);
+            Merge(array, aux, left, middle, right);
+        }
+
+        private void Merge(T[] array, T[] aux, int left, int middle, int right)
+        {
+            for (int k = left; k <= right; k++)
+                aux[k] = array[k];
+
+            int i = left;
+            int j = middle+1;
+
+            for (int k = left; k <= right; k++)
+            {
+                if (i > middle)
+                    array[k] = aux[j++];
+                else if (j > right)
+                    array[k] = aux[i++];
+                else if (aux[i].CompareTo(aux[j]) <= 0)
+                    array[k] = aux[i++];
+                else
+                    array[k] = aux[j++];
+            }
         }
     }
 }

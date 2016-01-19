@@ -12,9 +12,9 @@ public class MergeSortTest
     [SetUp]
     public void Init()
     {
-        this.sorter = new MergeSort<int>();
-        this.provider = DataProvider.GetDataProvider();
-        this.validator = Validator.GetValidator();
+        sorter = new MergeSort<int>();
+        provider = DataProvider.GetDataProvider();
+        validator = Validator.GetValidator();
     }
 
     [Test]
