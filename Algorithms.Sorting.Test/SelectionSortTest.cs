@@ -5,14 +5,12 @@ using Algorithms.Tests.Helper;
 [TestFixture]
 public class SelectionSortTest
 {
-    private ISort<int> sorter;
     private DataProvider provider;
     private Validator validator;
 
     [SetUp]
     public void Init()
     {
-        sorter = new SelectionSort<int>();
         provider = DataProvider.GetDataProvider();
         validator = Validator.GetValidator();
     }
@@ -20,20 +18,25 @@ public class SelectionSortTest
     [Test]
     public void SelectionSort_RandomIntegerSequence_Success()
     {
-        int[] temp = sorter.Sort(provider.GetRandomIntegerArray(1000));
+        int[] testDataset = provider.GetRandomIntegerArray(1000);
 
-        if (!validator.ValidateOrder<int>(temp))
-        {
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        SelectionSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
             Assert.Fail();
-        }
     }
 
     [Test]
     public void SelectionSort_EmptyArray_Success()
     {
-        int[] temp = sorter.Sort(provider.GetEmptyIntegerArray());
+        int[] testDataset = provider.GetEmptyIntegerArray();
 
-        if (!validator.ValidateOrder<int>(temp))
+        SelectionSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
         {
             Assert.Fail();
         }
@@ -42,11 +45,84 @@ public class SelectionSortTest
     [Test]
     public void SelectionSort_OneElementArray_Success()
     {
-        int[] temp = sorter.Sort(provider.GetOneElementIntegerArray());
+        int[] testDataset = provider.GetOneElementIntegerArray();
 
-        if (!validator.ValidateOrder<int>(temp))
+        SelectionSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
         {
             Assert.Fail();
         }
     }
+
+    [Test]
+    public void SelectionSort_OddElementArray_Success()
+    {
+        int[] testDataset = provider.GetRandomIntegerArray(51, 100);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        SelectionSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void SelectionSort_EvenElementArray_Success()
+    {
+        int[] testDataset = provider.GetRandomIntegerArray(50, 100);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        SelectionSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void SelectionSort_StringArray_Success()
+    {
+        string[] testDataset = provider.GetRandomStringsArray(10000);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        SelectionSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void SelectionSort_EmptyStringArray_Success()
+    {
+        string[] testDataset = provider.GetEmptyStringArray();
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        SelectionSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void SelectionSort_OneElementStringArray_Success()
+    {
+        string[] testDataset = provider.GetOneElementStringArray();
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        SelectionSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
 }

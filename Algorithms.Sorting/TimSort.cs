@@ -17,7 +17,11 @@ namespace Algorithms.Sorting
     ///  Average case performance: O(n log n)
     ///  Worst space complexity: O(n)
     /// </summary>
-    class TimSort
+    public class TimSort
     {
+        public static void Sort<T>(T[] array) where T : IComparable<T>
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -13,9 +13,9 @@ namespace Algorithms.Sorting
     ///  Average case performance: O(n^2 / 2^p)
     ///  Worst space complexity: O(1)
     /// </summary>
-    public class CombSort<T> : ISort<T> where T : IComparable<T>, new()
+    public class CombSort
     {
-        public T[] Sort(T[] array)
+        public static void Sort<T>(T[] array) where T : IComparable<T>
         {
             int gap = array.Length;
             bool swapped = true;
@@ -40,7 +40,6 @@ namespace Algorithms.Sorting
                     i++;
                 }
             }
-            return array;
         }
     }
 }

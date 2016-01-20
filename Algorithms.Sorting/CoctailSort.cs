@@ -13,9 +13,9 @@ namespace Algorithms.Sorting
     ///  Average case performance: O(n^2)
     ///  Worst space complexity: O(1)
     /// </summary>
-    public class CoctailSort<T> : ISort<T> where T : IComparable<T>, new()
+    public class CoctailSort
     {
-        public T[] Sort(T[] array)
+        public static void Sort<T>(T[] array) where T : IComparable<T>
         {
             int arrLenght = array.Length;
 
@@ -50,7 +50,6 @@ namespace Algorithms.Sorting
                     break;
                 }
             }
-            return array;
         }
     }
 }

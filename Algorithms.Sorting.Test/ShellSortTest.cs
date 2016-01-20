@@ -18,22 +18,25 @@ public class ShellSortTest
     [Test]
     public void ShellSort_RandomIntegerSequence_Success()
     {
-        ISort<int> sorter = new ShellSort<int>();
-        int[] temp = sorter.Sort(provider.GetRandomIntegerArray(1000));
+        int[] testDataset = provider.GetRandomIntegerArray(1000);
 
-        if (!validator.ValidateOrder(temp))
-        {
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        ShellSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
             Assert.Fail();
-        }
     }
 
     [Test]
     public void ShellSort_EmptyArray_Success()
     {
-        ISort<int> sorter = new ShellSort<int>();
-        int[] temp = sorter.Sort(provider.GetEmptyIntegerArray());
+        int[] testDataset = provider.GetEmptyIntegerArray();
 
-        if (!validator.ValidateOrder(temp))
+        ShellSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
         {
             Assert.Fail();
         }
@@ -42,12 +45,84 @@ public class ShellSortTest
     [Test]
     public void ShellSort_OneElementArray_Success()
     {
-        ISort<int> sorter = new ShellSort<int>();
-        int[] temp = sorter.Sort(provider.GetOneElementIntegerArray());
+        int[] testDataset = provider.GetOneElementIntegerArray();
 
-        if (!validator.ValidateOrder(temp))
+        ShellSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
         {
             Assert.Fail();
         }
     }
+
+    [Test]
+    public void ShellSort_OddElementArray_Success()
+    {
+        int[] testDataset = provider.GetRandomIntegerArray(51, 100);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        ShellSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void ShellSort_EvenElementArray_Success()
+    {
+        int[] testDataset = provider.GetRandomIntegerArray(50, 100);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        ShellSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void ShellSort_StringArray_Success()
+    {
+        string[] testDataset = provider.GetRandomStringsArray(10000);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        ShellSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void ShellSort_EmptyStringArray_Success()
+    {
+        string[] testDataset = provider.GetEmptyStringArray();
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        ShellSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void ShellSort_OneElementStringArray_Success()
+    {
+        string[] testDataset = provider.GetOneElementStringArray();
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        ShellSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
 }

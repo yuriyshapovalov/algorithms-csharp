@@ -13,9 +13,9 @@ namespace Algorithms.Sorting
     ///  Average case performance: depends on gap sequence
     ///  Space: O(1)
     /// </summary>
-    public class ShellSort<T> : ISort<T> where T : IComparable<T>, new()
+    public class ShellSort
     {
-        public T[] Sort(T[] array)
+        public static void Sort<T>(T[] array) where T : IComparable<T>
         {
             int gap = (int)array.Length / 2;
 
@@ -42,7 +42,6 @@ namespace Algorithms.Sorting
                 else
                     gap = (int) gap / 2;
             }
-            return array;
         }
     }
 }

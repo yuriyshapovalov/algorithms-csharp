@@ -13,24 +13,21 @@ namespace Algorithms.Sorting
     ///  Average case performance: O(n log n)
     ///  Space: O(n)
     /// </summary>
-    public class MergeSort<T> : ISort<T> where T : IComparable<T>, new()
+    public class MergeSort
     {
-        public T[] Sort(T[] array)
+        public static void Sort<T>(T[] array) where T : IComparable<T>
         {
 	        // if array has only zero or one element, it is already sorted
 	        if(array.Length <= 1)
 	        {
-                return array;
+                return;
 	        }
 
             T[] aux = new T[array.Length];
             Sort(array, aux, 0, array.Length-1);
-
-            return array;
-
         }
 
-        private void Sort(T[] array, T[] aux, int left, int right)
+        private static void Sort<T>(T[] array, T[] aux, int left, int right) where T : IComparable<T>
         {
             if (right <= left)
                 return;
@@ -42,7 +39,7 @@ namespace Algorithms.Sorting
             Merge(array, aux, left, middle, right);
         }
 
-        private void Merge(T[] array, T[] aux, int left, int middle, int right)
+        private static void Merge<T>(T[] array, T[] aux, int left, int middle, int right) where T : IComparable<T>
         {
             for (int k = left; k <= right; k++)
                 aux[k] = array[k];

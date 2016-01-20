@@ -156,7 +156,7 @@ namespace Algorithms.Tests.Helper
 
         public string[] GetOneElementStringArray()
         {
-            string[] data = { "aa" };
+            string[] data = { "ab" };
             return data;
         }
 

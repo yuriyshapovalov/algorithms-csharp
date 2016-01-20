@@ -13,9 +13,9 @@ namespace Algorithms.Sorting
     ///  Average case performance: O(n^2)
     ///  Worst space complexity: O(1)
     /// </summary>
-    public class SelectionSort<T> : ISort<T> where T : IComparable<T>, new()
+    public class SelectionSort
     {
-        public T[] Sort(T[] array)
+        public static void Sort<T>(T[] array) where T : IComparable<T>
         {
             // for all elements in array
             for(int i = 0; i <= array.Length; i++)
@@ -44,8 +44,6 @@ namespace Algorithms.Sorting
                     array[min] = temp;
                 }       
             }
-            // array should be sorted here.
-            return array;
         }
     }
 }

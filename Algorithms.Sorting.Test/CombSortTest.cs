@@ -1,69 +1,128 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
+using Algorithms.Sorting;
+using Algorithms.Tests.Helper;
 
-namespace Algorithms.Sorting.Test
+[TestFixture]
+public class CombSortTest
 {
-    /// <summary>
-    /// Summary description for CombSortTest
-    /// </summary>
-    [TestClass]
-    public class CombSortTest
+    private DataProvider provider;
+    private Validator validator;
+
+    [SetUp]
+    public void Init()
     {
-        public CombSortTest()
+        provider = DataProvider.GetDataProvider();
+        validator = Validator.GetValidator();
+    }
+
+    [Test]
+    public void CombSort_RandomIntegerSequence_Success()
+    {
+        int[] testDataset = provider.GetRandomIntegerArray(1000);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        CombSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void CombSort_EmptyArray_Success()
+    {
+        int[] testDataset = provider.GetEmptyIntegerArray();
+
+        CombSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
         {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
-        [TestMethod]
-        public void TestMethod1()
-        {
-            //
-            // TODO: Add test logic here
-            //
+            Assert.Fail();
         }
     }
+
+    [Test]
+    public void CombSort_OneElementArray_Success()
+    {
+        int[] testDataset = provider.GetOneElementIntegerArray();
+
+        CombSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+        {
+            Assert.Fail();
+        }
+    }
+
+    [Test]
+    public void CombSort_OddElementArray_Success()
+    {
+        int[] testDataset = provider.GetRandomIntegerArray(51, 100);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        CombSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void CombSort_EvenElementArray_Success()
+    {
+        int[] testDataset = provider.GetRandomIntegerArray(50, 100);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        CombSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void CombSort_StringArray_Success()
+    {
+        string[] testDataset = provider.GetRandomStringsArray(10000);
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        CombSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void CombSort_EmptyStringArray_Success()
+    {
+        string[] testDataset = provider.GetEmptyStringArray();
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        CombSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
+    [Test]
+    public void CombSort_OneElementStringArray_Success()
+    {
+        string[] testDataset = provider.GetOneElementStringArray();
+
+        if (validator.ValidateOrder(testDataset))
+            Assert.Inconclusive("Sorting test dataset is incorrect");
+
+        CombSort.Sort(testDataset);
+
+        if (!validator.ValidateOrder(testDataset))
+            Assert.Fail();
+    }
+
 }

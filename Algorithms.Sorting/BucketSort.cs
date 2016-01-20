@@ -17,7 +17,11 @@ namespace Algorithms.Sorting
     ///  Average case performance: O(n+k)
     ///  Worst space complexity: O(nk)
     /// </summary>
-    class BucketSort
+    public class BucketSort
     {
+        public static void Sort<T>(T[] array) where T : IComparable<T>
+        {
+            throw new NotImplementedException();
+        }
     }
 }

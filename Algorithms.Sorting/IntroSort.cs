@@ -17,7 +17,11 @@ namespace Algorithms.Sorting
     ///  Average case performance: O(n log n)
     ///  Space: O(log n)
     /// </summary>
-    class IntroSort
+    public class IntroSort
     {
+        public static void Sort<T>(T[] array) where T : IComparable<T>
+        {
+            throw new NotImplementedException();
+        }
     }
 }

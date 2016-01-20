@@ -13,9 +13,9 @@ namespace Algorithms.Sorting
     ///  Average case performance: O(n^2)
     ///  Worst space complexity: O(1)
     /// </summary>
-    public class BubbleSort<T> : ISort<T> where T : IComparable<T>, new()
+    public class BubbleSort
     {
-        public T[] Sort(T[] array)
+        public static void Sort<T>(T[] array) where T : IComparable<T>
         {
             bool clear = false;
             while (!clear)
@@ -34,7 +34,6 @@ namespace Algorithms.Sorting
                     }
                 }
             }
-            return array;
         }
     }
 }
